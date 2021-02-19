@@ -1,5 +1,10 @@
+# Uses k-Nearest Neighbors in order to recognize hand-written digits from a scikit dataset.
+# Adapted from an example of datacamp.com
+
 # Import necessary modules
 from sklearn import datasets
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
 # Load the digits dataset: digits
@@ -17,16 +22,12 @@ print(digits.data.shape)
 plt.imshow(digits.images[1010], cmap=plt.cm.gray_r, interpolation='nearest')
 plt.show()
 
-# Import necessary modules
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import train_test_split
-
 # Create feature and target arrays
 X = digits.data
 y = digits.target
 
 # Split into training and test set
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state=42, stratify=y)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
 # Create a k-NN classifier with 7 neighbors: knn
 knn = KNeighborsClassifier(n_neighbors=7)
